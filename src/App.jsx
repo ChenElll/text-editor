@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Container, Box } from '@mui/material';
+import { Container, Box, Typography } from '@mui/material';
 import TextEditor from './TextEditor';
 import Toolbar from './Toolbar';
 import Keyboard from './Keyboard';
@@ -55,7 +55,10 @@ function App() {
   };
 
   return (
-    <Container>
+    <Container style={{ textAlign: 'center' }}>
+      <Typography variant="h2" gutterBottom>
+        Text Editor
+      </Typography>
       <Toolbar 
         setStyle={setStyle} 
         setLanguage={setLanguage} 
@@ -65,7 +68,7 @@ function App() {
         undo={undo}
         style={style}
       />
-      <Box mt={2}>
+      <Box mt={2} sx={{ textAlign: 'left' }}>
         <TextEditor text={text} />
       </Box>
       <Keyboard updateText={updateText} language={language} deleteLastChar={deleteLastChar} />

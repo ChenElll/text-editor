@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Button, Select, MenuItem, InputLabel, FormControl } from '@mui/material';
+import { Box, Button, Select, MenuItem, FormControl } from '@mui/material';
 
 function Toolbar({ setStyle, setLanguage, clearAll, lowerAll, upperAll, undo, style }) {
   const handleStyleChange = (e) => {
@@ -12,10 +12,10 @@ function Toolbar({ setStyle, setLanguage, clearAll, lowerAll, upperAll, undo, st
   };
 
   return (
-    <Box display="flex" justifyContent="space-between" flexWrap="wrap">
+    <Box display="flex" justifyContent="center" flexWrap="wrap" gap={2}>
       <FormControl>
-        <InputLabel>Font Size</InputLabel>
-        <Select name="fontSize" value={style.fontSize} onChange={handleStyleChange}>
+        <Select name="fontSize" value={style.fontSize} onChange={handleStyleChange} displayEmpty>
+          <MenuItem value="" disabled>Font Size</MenuItem>
           <MenuItem value="12px">12px</MenuItem>
           <MenuItem value="16px">16px</MenuItem>
           <MenuItem value="20px">20px</MenuItem>
@@ -23,8 +23,8 @@ function Toolbar({ setStyle, setLanguage, clearAll, lowerAll, upperAll, undo, st
       </FormControl>
 
       <FormControl>
-        <InputLabel>Font Family</InputLabel>
-        <Select name="fontFamily" value={style.fontFamily} onChange={handleStyleChange}>
+        <Select name="fontFamily" value={style.fontFamily} onChange={handleStyleChange} displayEmpty>
+          <MenuItem value="" disabled>Font Family</MenuItem>
           <MenuItem value="Arial">Arial</MenuItem>
           <MenuItem value="Courier New">Courier New</MenuItem>
           <MenuItem value="Times New Roman">Times New Roman</MenuItem>
@@ -32,8 +32,8 @@ function Toolbar({ setStyle, setLanguage, clearAll, lowerAll, upperAll, undo, st
       </FormControl>
 
       <FormControl>
-        <InputLabel>Color</InputLabel>
-        <Select name="color" value={style.color} onChange={handleStyleChange}>
+        <Select name="color" value={style.color} onChange={handleStyleChange} displayEmpty>
+          <MenuItem value="" disabled>Color</MenuItem>
           <MenuItem value="black">Black</MenuItem>
           <MenuItem value="red">Red</MenuItem>
           <MenuItem value="blue">Blue</MenuItem>
@@ -73,8 +73,8 @@ function Toolbar({ setStyle, setLanguage, clearAll, lowerAll, upperAll, undo, st
       </Button>
 
       <FormControl>
-        <InputLabel>Language</InputLabel>
-        <Select value={style.language} onChange={handleLanguageChange}>
+        <Select value={style.language} onChange={handleLanguageChange} displayEmpty>
+          <MenuItem value="" disabled>Language</MenuItem>
           <MenuItem value="en">English</MenuItem>
           <MenuItem value="he">Hebrew</MenuItem>
           <MenuItem value="emoji">Emoji</MenuItem>

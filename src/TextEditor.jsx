@@ -3,13 +3,12 @@ import { Box } from '@mui/material';
 
 function TextEditor({ text }) {
   return (
-    <Box
-      component="div"
-      sx={{
-        border: '1px solid black',
-        minHeight: '200px',
-        padding: '10px',
-        whiteSpace: 'pre-wrap',
+    <Box 
+      sx={{ 
+        border: '1px solid black', 
+        padding: '16px', 
+        minHeight: '200px', 
+        textAlign: 'left' // שינוי לכיוון שמאל
       }}
     >
       {text.map((item, index) => (
