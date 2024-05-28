@@ -1,4 +1,3 @@
-import React from 'react';
 import { Box } from '@mui/material';
 
 function TextEditor({ text }) {
@@ -11,7 +10,9 @@ function TextEditor({ text }) {
         textAlign: 'left' // שינוי לכיוון שמאל
       }}
     >
+      {/* מיפוי של המערך text לצורך הצגת כל פריט כאלמנט span */}
       {text.map((item, index) => (
+           // אלמנט span עם מפתח ייחודי ועיצוב אישי
         <span key={index} style={item.style}>
           {item.char}
         </span>

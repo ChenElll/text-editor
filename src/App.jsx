@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Container, Box, Typography } from '@mui/material';
+// ייבוא הקומפוננטות TextEditor, Toolbar, Keyboard
 import TextEditor from './TextEditor';
 import Toolbar from './Toolbar';
 import Keyboard from './Keyboard';
@@ -18,11 +19,13 @@ function App() {
     fontStyle: 'normal',
   });
 
+  // פונקציה לעדכון הטקסט עם תו חדש
   const updateText = (newChar) => {
     setHistory((prev) => [...prev, [...text]]);
     setText((prev) => [...prev, { char: newChar, style }]);
   };
 
+ // פונקציה לביטול השינוי האחרון
   const undo = () => {
     if (history.length > 0) {
       setText(history[history.length - 1]);
@@ -30,11 +33,13 @@ function App() {
     }
   };
 
+  // פונקציה לניקוי כל הטקסט
   const clearAll = () => {
     setHistory((prev) => [...prev, [...text]]);
     setText([]);
   };
 
+    // פונקציה להפיכת כל הטקסט לאותיות קטנות
   const lowerAll = () => {
     setText((prev) =>
       prev.map((item) => ({ ...item, char: item.char.toLowerCase(), style: { ...item.style, textTransform: 'lowercase' } }))
@@ -42,6 +47,7 @@ function App() {
     setStyle((prev) => ({ ...prev, textTransform: 'lowercase' }));
   };
 
+  // פונקציה להפיכת כל הטקסט לאותיות גדולות
   const upperAll = () => {
     setText((prev) =>
       prev.map((item) => ({ ...item, char: item.char.toUpperCase(), style: { ...item.style, textTransform: 'uppercase' } }))
@@ -49,6 +55,7 @@ function App() {
     setStyle((prev) => ({ ...prev, textTransform: 'uppercase' }));
   };
 
+  // פונקציה למחיקת התו האחרון
   const deleteLastChar = () => {
     setHistory((prev) => [...prev, [...text]]);
     setText((prev) => prev.slice(0, -1));

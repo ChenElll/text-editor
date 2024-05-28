@@ -1,6 +1,8 @@
-import React from 'react';
+// ייבוא רכיבי Box, Button, Select, MenuItem, FormControl מספריית MUI לצורך עיצוב
 import { Box, Button, Select, MenuItem, FormControl } from '@mui/material';
 
+// פונקציה המעדכנת את הסגנון (style) לפי הבחירות של המשתמש. מקבלת אירוע (e), מוציאה ממנו את שם התכונה 
+// (name) והערך החדש (value), ומעדכנת את המצב style בהתאם.
 function Toolbar({ setStyle, setLanguage, clearAll, lowerAll, upperAll, undo, style }) {
   const handleStyleChange = (e) => {
     const { name, value } = e.target;
@@ -13,6 +15,7 @@ function Toolbar({ setStyle, setLanguage, clearAll, lowerAll, upperAll, undo, st
 
   return (
     <Box display="flex" justifyContent="center" flexWrap="wrap" gap={2}>
+      {/* בחירת גודל הפונט */}
       <FormControl>
         <Select name="fontSize" value={style.fontSize} onChange={handleStyleChange} displayEmpty>
           <MenuItem value="" disabled>Font Size</MenuItem>
@@ -21,7 +24,7 @@ function Toolbar({ setStyle, setLanguage, clearAll, lowerAll, upperAll, undo, st
           <MenuItem value="20px">20px</MenuItem>
         </Select>
       </FormControl>
-
+ {/* בחירת משפחת הפונט */}
       <FormControl>
         <Select name="fontFamily" value={style.fontFamily} onChange={handleStyleChange} displayEmpty>
           <MenuItem value="" disabled>Font Family</MenuItem>
@@ -30,7 +33,7 @@ function Toolbar({ setStyle, setLanguage, clearAll, lowerAll, upperAll, undo, st
           <MenuItem value="Times New Roman">Times New Roman</MenuItem>
         </Select>
       </FormControl>
-
+{/* בחירת צבע הפונט */}
       <FormControl>
         <Select name="color" value={style.color} onChange={handleStyleChange} displayEmpty>
           <MenuItem value="" disabled>Color</MenuItem>
@@ -39,19 +42,21 @@ function Toolbar({ setStyle, setLanguage, clearAll, lowerAll, upperAll, undo, st
           <MenuItem value="blue">Blue</MenuItem>
         </Select>
       </FormControl>
-
+{/* bold */}
       <Button 
         onClick={() => setStyle((prev) => ({ ...prev, fontWeight: prev.fontWeight === 'bold' ? 'normal' : 'bold' }))}
         variant={style.fontWeight === 'bold' ? 'contained' : 'outlined'}
       >
         Bold
       </Button>
+      {/* Underline */}
       <Button 
         onClick={() => setStyle((prev) => ({ ...prev, textDecoration: prev.textDecoration === 'underline' ? 'none' : 'underline' }))}
         variant={style.textDecoration === 'underline' ? 'contained' : 'outlined'}
       >
         Underline
       </Button>
+      {/* Italic */}
       <Button 
         onClick={() => setStyle((prev) => ({ ...prev, fontStyle: prev.fontStyle === 'italic' ? 'normal' : 'italic' }))}
         variant={style.fontStyle === 'italic' ? 'contained' : 'outlined'}
